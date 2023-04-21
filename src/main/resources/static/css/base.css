@@ -1,0 +1,240 @@
+
+/*****************************table border *************************************/
+		table.tblborder{border-collapse:collapse;border:1px solid #897b6e;border-style:dashed; }
+		table.tblborder1{    border: 4px solid #827d7d;background: #efefef;}
+		table.tblreport{border-collapse:collapse;border:1px solid #897b6e;}   
+		table.tblreport tr td{border:1px solid #897b6e; }   
+		table.bkcolor{background-color:#ffffff;border:1px solid #897b6e;}   
+
+/******************************tr border bgcolor*********************************************/
+	 tr.bkcolor{background-color:#e1f7dd;}
+	 
+/*for vertical menu*/
+	.menubgclr{background-color: #09131a;width: 5%}  
+
+	.top
+		{ text-align:right; padding:5px 10px 40px 0px }
+	
+	.txt-red
+		{ font-weight:bold; color:#DD0000;font-size:11px; font-family:verdana;}
+	.txt-black
+		{ font-weight:bold; color:#000000;font-size:11px; font-family:verdana;}
+	.txt-blue 
+		{ font-weight:bold; color:#1F489B; font-size:12px; }
+	.txt-green
+	{font-weight:bold; color:#25843F;font-size:11px; font-family:verdana; sans-serif;	}	
+	.txt-hdrclr 
+	{ 
+		font-weight:bold; color:#707E01; 
+		font-family: verdana; 
+		font-size: 16px; 
+		font-weight: normal; 
+		text-transform:capitalize; 
+	} 
+		
+	.txt-blbd span
+		{ color:#FF0000; font-size:14px; padding-right:5px }
+	.lnk-grybd
+		{ font-weight:bold; color:#858585 }
+		
+	.bodyTitle
+	{ font-weight:bold; text-transform:capitalize; color:#1F489B }	
+	caption.header{font-family:verdana, sans-serif; font-size:11px ;font-weight:bold;word-spacing:2px; text-transform:uppercase; text-align:left;color: #fff;
+    padding: 10px;
+    background: #827d7d; }
+	
+	caption.b{font-family:verdana; font-size:11px ;font-weight:bold; color: royalblue;text-align:left}
+	caption.testcap{font-family:verdana; font-size:11px ;font-weight:normal; text-align:left}
+	caption.reportHeader{font-family:verdana; font-size:11px ;font-weight:bold; color: #594D00;text-align:center}
+	td.contentbold{ font-family:verdana; font-size:14px; font-weight:bold; color:#0E3092;}
+	td.txt-notosans{ font-family: 'Lato', sans-serif; font-size:13px ;font-weight:normal; color:#333333;} 
+	td.txt1{ font-family:verdana; font-size:11px ;font-weight:normal; color:#333333;line-height: 22px;}  
+	td.txt1 input[type=radio]{position: relative;top: 3px;right: 1px;}
+	td.txt2{ font-family:verdana; font-size:11px ;font-weight:bold; color:#333333;} 
+	td.txt3{ font-family:verdana; font-size:12px ;font-weight:normal; color:#333333;}
+	.txtheader{ font-family:verdana; font-size:11px ;font-weight:bold; color:#000000;} 
+	td.qs{ font-family:verdana; font-size:11px ;font-weight:normal;}
+	font.a{ font-family:verdana; font-size:11px ;font-weight:bold; color:#FF9900;}
+	
+	font.header{font-family:verdana; sans-serif; font-size:11px ;font-weight:bold;word-spacing:2px; text-transform:uppercase; text-align:left;color:black; }
+	
+	input.inputemailborder
+	{
+		font:normal 11px verdana;
+	    color:#313131
+	}  	
+	input[type=text], input[type=password]{
+	  width: 100%;
+	  padding: 7px 20px;
+	  margin: 0;
+	  box-sizing: border-box;
+	  border: 1px solid #827d7d;
+	      border-radius: 3px;
+	}
+	input{
+		
+	    padding: 7px 15px;
+	    margin: 0;
+	    box-sizing: border-box;
+	    border: 1px solid #827d7d;
+	        border-radius: 3px;
+	}
+	input.btn 
+	{	
+		cursor: pointer;
+		color: #FFFFFF;
+		font-family: arial;
+		font-size: 12px;
+		font-weight: normal;
+		letter-spacing: 0.05em;
+		background-color: #827d7d;
+		border: none;
+		padding: 10px 10px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;  
+	}
+	input.btn.view
+	{	
+		color: #FFFFFF;		
+		background-color: #d71635;
+	}
+	input.btn.view:hover
+	{	
+		color: #fff;		
+		background-color: #827d7d;
+	}
+	input.btn:hover
+	{	
+	background-color: #d71635;
+	color: #FFFFFF;
+	}
+	input.btn_red
+	{	
+		cursor: pointer;
+		color: #FFFFFF;
+		font-family: arial;
+		font-size: 12px;
+		font-weight: normal;
+		letter-spacing: 0.05em;
+		background-color: #C50020;
+		border: none;
+		padding: 5px 10px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;  
+	}
+	input.btnNotStarted
+	{
+		color:#FFFFFF;
+		font-family:verdana; sans-serif; 
+		font-size:11px ;
+		font-weight:bold;
+		background-color:#FF0000; 		  
+		border-color: #FF0000;  
+		display:disabled;
+	}
+	input.btnInCompleted
+	{
+		color:#FFFFFF;
+		font-family:verdana; sans-serif; 
+		font-size:11px ;
+		font-weight:bold;
+		background-color:#FFC000; 		  
+		border-color: #FFC000;  
+		button:"disabled";
+	}
+	.headerrow
+	{
+		font-family:verdana, sans-serif; 
+		font-size:11px ;
+		font-weight:bold;
+		background-color:#505656 ; 
+		color:#ffffff;
+		line-height: 25px;
+	} 
+	.headerrow1
+	{
+		font-family: 'Lato', sans-serif;
+		font-size:15px ;
+		font-weight: bold;
+		background-color:#C50E2C ;  
+		color:#ffffff; 
+	} 
+	.headerrowbold
+	{
+		font-family:verdana; sans-serif; 
+		font-size:11px ;
+		font-weight: bold;
+		background-color:#505656;
+		color:#ffffff;
+		text-align:center;
+	} 
+	.oddclr
+	{
+		background-color:#ffffff;
+	}
+	.evenclr
+	{
+		background-color:#f2fafd ;
+	}
+
+	span.gn
+	{
+		background-color: #387C44;
+		border-color:#387C44;
+		color:white;
+		font-family: verdana;
+		font-weight: bold;
+		font-size: 11px;
+		width:18px;
+		text-align:center;
+		cursor: pointer;
+	}
+	span.rd
+	{
+		background-color: #E55451;
+		border-color:#E55451;
+		color:white;
+		font-family: verdana;
+		font-weight: bold;
+		font-size: 11px;
+		width:18px;
+		text-align:center;
+		cursor: pointer;
+	}
+	span.yl
+	{
+		background-color: #FBB917;
+		border-color:#FBB917;
+		color:white;
+		font-family: verdana;
+		font-weight: bold;
+		font-size: 11px;
+		width:15px;
+		text-align:center;
+		cursor: pointer;
+	}
+	span.bl
+	{
+		background-color: #6698FF;
+		border-color:#6698FF;
+		color:white;
+		font-family: verdana;
+		font-weight: bold;
+		font-size: 11px;
+		width:15px;
+		text-align:center;
+		cursor: pointer;
+	}
+	td.scn {
+		font-family:verdana;
+		font-size:11px;
+		font-weight:bolder;
+		color:royalblue;
+	}
+	.instruction
+	{
+		font-family: 'Lato', sans-serif;
+		font-size:15px ;
+		font-weight: bold;
+		color:black; 
+	} 

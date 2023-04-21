@@ -1,0 +1,61 @@
+<%@ page language="java" import="gols.common.*,java.sql.*"%>
+<%
+HTTPHeaders.set_response_headers(response);
+DBUtility mycon=new DBUtility();
+PreparedStatement pst=null;
+ResultSet rs=null;
+
+Connection con=null;
+String query = "";
+
+try
+{
+	con = mycon.get_DBConnection();
+	
+	String role = ReplaceUtility.replacenull(request.getParameter("role"));
+	String division = ReplaceUtility.replacenull(request.getParameter("division"));
+	String fromAddEmp=ReplaceUtility.replacenull(request.getParameter("fromAddEmp"));
+%>
+<html>
+	<head>
+	</head>
+	<body>
+	<%if(!fromAddEmp.equals("1")){%>:&nbsp;<%} %>
+  		<select name="role" style="width: 250px" <%if(!fromAddEmp.equals("1")){%>multiple size="3"<%} %>>
+		<option  value="">- select -</option>
+<%
+		query =" select rm.role_id,role from ROLE_DIVISION_MAP rdm "+ 
+					 " inner join ROLE_MASTER rm on rm.role_id=rdm.role_id and rm.status='A' "+
+					 " where rdm.status='A' and rdm.div_id=? ";
+		pst = con.prepareStatement(query);
+		pst.setString(1,division);
+		rs = pst.executeQuery();
+		while(rs.next())
+		{
+		%>
+		<option value="<%=rs.getString("role_id")%>"<% if(role.equals(rs.getString("role_id"))) out.print("selected"); %>>
+			<%=ReplaceUtility.replacenull(rs.getString("role"))%>
+		</option>
+		<%
+		}
+		rs.close();
+		pst.close();
+
+%>
+</select>
+</body>
+</html>
+<%
+}
+catch(Exception e)
+{
+	System.out.println("Exception in ACGSURVEY >> include >> populateRole.jsp... "+e);	
+}
+finally
+{
+	mycon.close_DBResultset(rs);
+	mycon.close_PreparedStatement(pst);
+	mycon.close_DBConnection(con);
+	mycon=null;
+}
+%>

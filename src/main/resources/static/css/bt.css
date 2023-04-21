@@ -1,0 +1,77 @@
+.button1: {
+	display: inline-block;
+	zoom: 1; /* zoom and 
+display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font-family: Consolas;  
+	font-size:14px;
+	font-weight:bold; 
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	font-weight:bold;
+	disabled;
+}
+
+.button {
+	display: inline-block;
+	zoom: 1; /* zoom and 
+display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font-family: Consolas;  
+	font-size:14px;
+	font-weight:bold; 
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	font-weight:bold;
+}
+
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+ 
+
+.medium {
+	font-size: 14px;
+	padding: .4em 1.5em .42em;	
+}
+
+.small {
+	font-size: 11px;
+	padding: .2em 1em .275em;
+}
+
+
+.orange {
+	color: #fef4e9;
+	background-color:black;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+.orange:hover {
+	color: black;
+	background-color:#fef4e9;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+.orange:active {
+	color: #fef4e9;
+	background-color:black;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+
+

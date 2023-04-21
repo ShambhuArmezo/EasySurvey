@@ -1,0 +1,39 @@
+<%@ page language="java" import="gols.common.ReplaceUtility"%>
+<%
+	String appname = ReplaceUtility.replacenull(application.getInitParameter("APP_NAME"));
+%>
+<style type="text/css">
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+</style>
+	<body> 
+  		<table  width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF" style="padding: 10px;">
+			<tr>
+				<td>  
+					<img width="64"  src="../images/acg360logo.jpg"  />  
+				</td>  
+				<td align="right">  
+					<img width="160px"     src="../images/careImg.png"  />      
+				</td>  
+			</tr>
+ 		</table> 
+		<hr color="#d71635" style="margin-top: 0;
+    box-shadow: 0px 4px 14px #000;
+    margin-bottom: 0;
+    padding: 0;">
+	</body>
+<%-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="40" align="left" valign="top" style="background-color:#F5F5DC; background-repeat:repeat-x; background-position:top left;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50%" align="left" valign="top"><img src="/<%=appname%>/images/maricologo.JPG" width="150" height="55" /></td>
+        <td width="50%" align="right" valign="middle"><img src="/<%=appname%>/images/exit-survey.png" width="170" height="55" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<hr color="#82C053"> --%>

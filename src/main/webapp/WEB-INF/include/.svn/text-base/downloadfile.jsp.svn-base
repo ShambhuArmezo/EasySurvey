@@ -1,0 +1,64 @@
+<%@ page  import="java.io.FileInputStream,java.io.BufferedInputStream,
+				  java.io.File,java.io.IOException,gols.common.ReplaceUtility" 
+%><%
+
+   	// you  can get your base and parent from the database
+   	String flag=ReplaceUtility.replacenull(request.getParameter("flag"));
+
+	String filepath = "",filename = "";
+	if(flag.equals("a"))
+	{
+		filename = ReplaceUtility.replacenull(request.getParameter("filename"));
+		filepath="downloadtopdffiles/"+filename;
+	} 
+	else
+	{
+		filepath=ReplaceUtility.replacenull(request.getParameter("filepath"));
+		filename = filepath.substring(filepath.lastIndexOf("/")+1,filepath.length());
+	}
+
+	BufferedInputStream buf=null;
+   	ServletOutputStream myOut=null;
+   	File myfile = null;
+
+	try{
+	
+		 myOut = response.getOutputStream();
+		 String appRealPath = session.getServletContext().getRealPath("/");
+	     myfile = new File(appRealPath+""+filepath);
+	
+		 int length = 0;
+	       
+	     ServletContext context = getServletConfig().getServletContext();
+	     String mimetype = context.getMimeType(filename);
+	
+	     response.setContentType( (mimetype != null) ? mimetype : "application/octet-stream" );
+	     response.setContentLength( (int)myfile.length() );
+	     response.setHeader( "Content-Disposition", "attachment; filename=\"" + filename + "\"" );
+	
+	     FileInputStream input = new FileInputStream(myfile);
+	     buf = new BufferedInputStream(input);
+	     int readBytes = 0;
+	
+	     //read from the file; write to the ServletOutputStream
+	     while((readBytes = buf.read( )) != -1)
+	       myOut.write(readBytes);
+	
+	} catch (IOException ioe)
+	{
+	   throw new ServletException(ioe.getMessage( ));         
+	} 
+	finally {
+	    //close the input/output streams
+	    if (myOut != null)
+	        myOut.close( );
+	    if (buf != null)
+	        buf.close( ); 
+	    
+	    if(flag.equals("a"))
+	    {
+	    	if(myfile != null && myfile.exists())
+	       	 	myfile.delete();
+	    }
+	}   
+%>

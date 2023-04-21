@@ -1,0 +1,62 @@
+<%@ page language="java" import="gols.common.*,java.sql.*"%>
+<%
+HTTPHeaders.set_response_headers(response);
+DBUtility mycon=new DBUtility();
+PreparedStatement pst=null;
+ResultSet rs=null;
+
+Connection con=null;
+String query = "";
+
+try
+{
+	con = mycon.get_DBConnection();
+	
+	String hrbp = ReplaceUtility.replacenull(request.getParameter("hrbp"));
+	String division = ReplaceUtility.replacenull(request.getParameter("division"));
+	String fromAddEmp=ReplaceUtility.replacenull(request.getParameter("fromAddEmp"));
+	String editPage=ReplaceUtility.replacenull(request.getParameter("editPage"));
+%>
+<html>
+	<head>
+	</head>
+	<body>
+	<%if(!fromAddEmp.equals("1")){%>:&nbsp;<%} %>
+  		<select name="division" style="width: 250px" <%if(!fromAddEmp.equals("1") && !editPage.equalsIgnoreCase("0")){%>multiple size="3"<%} %> onchange="fncPopulateZone();fncPopulateRole();">
+		<option  value="">- select -</option>
+<%
+		query =" select dm.div_id,division from HR_DIVISION_MAP hdm "+ 
+					 " inner join division_master dm on hdm.div_id=dm.div_id and dm.status='A' "+
+					 " where hdm.status='A' and hdm.hr_id=? ";
+		pst = con.prepareStatement(query);
+		pst.setString(1,hrbp);
+		rs = pst.executeQuery();
+		while(rs.next())
+		{
+		%>
+		<option value="<%=rs.getString("div_id")%>"<% if(division.equals(rs.getString("div_id"))) out.print("selected"); %>>
+			<%=ReplaceUtility.replacenull(rs.getString("division"))%>
+		</option>
+		<%
+	}
+	rs.close();
+	pst.close();
+
+%>
+</select>
+</body>
+</html>
+<%
+}
+catch(Exception e)
+{
+	System.out.println("Exception in ACGSURVEY >> include >> populateDivision.jsp... "+e);	
+}
+finally
+{
+	mycon.close_DBResultset(rs);
+	mycon.close_PreparedStatement(pst);
+	mycon.close_DBConnection(con);
+	mycon=null;
+}
+%>

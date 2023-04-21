@@ -1,0 +1,49 @@
+<%@ page language="java"  contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"
+import="com.gols.mrsurvey.util.UtilityMethods,java.sql.*,gols.common.*,java.util.*,com.gols.mrsurvey.util.Constant,static com.gols.mrsurvey.util.Constant.SURVEY1"	
+%>
+<%	
+	String hrbp=ReplaceUtility.replacenull(request.getParameter("hr"));
+	String[] division=request.getParameterValues("division");
+	String[] zone=request.getParameterValues("zone");
+	String[] roleName=request.getParameterValues("role");
+	String[] headquarter=request.getParameterValues("headquarter");
+	
+	String companyName=ReplaceUtility.replacenull(request.getParameter("companyname"));
+	String frmDate=ReplaceUtility.replacenull(request.getParameter("frmDate"));
+	String toDate=ReplaceUtility.replacenull(request.getParameter("toDate"));
+	
+	String allDivisionStr="";
+	String allZoneStr="";
+	String allRoleStr="";
+	String allHeadQuarterStr="";
+	
+	
+%>
+
+<%if(!roleid.equals("D")){ %>
+
+<tr>
+		
+	<td class="txt1" valign="middle">Company Name</td>
+	<td class="txt1" valign="middle">:&nbsp;
+             <input name="companyname" value="<%=companyName%>" style="width:250px;" size=10 >&nbsp; 
+	</td>
+	<td class="txt1" valign="middle">From</td>
+	<td class="txt1" valign="middle">:&nbsp;
+             <input name="frmDate" readonly value="<%=frmDate%>" style="width:220px;" size=10 >&nbsp; 
+				<a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.forms[0].frmDate);return false;" >
+					<img class="PopcalTrigger" style="cursor:hand" src="../cal/calbtn.gif"  width="20" height="18" border="0">
+				</a>
+	</td> 
+	<td class="txt1" valign="middle">To Date</td>
+	<td class="txt1" valign="middle">:&nbsp; 
+		<input name="toDate" readonly value="<%=toDate%>" style="width:220px;" size=10 >&nbsp;
+			<a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fPopCalendar(document.forms[0].toDate);return false;" >
+				<img class="PopcalTrigger" style="cursor:hand" src="../cal/calbtn.gif"  width="20" height="18" border="0">
+			</a>
+	</td>
+</tr>
+
+<%} %> 
+ 
+ 

@@ -1,0 +1,84 @@
+<%@ page language="java" import="gols.common.*,java.sql.*"%>
+<%
+HTTPHeaders.set_response_headers(response);
+DBUtility mycon=new DBUtility();
+PreparedStatement pst=null;
+ResultSet rs=null;
+
+Connection con=null;
+String query = "";
+
+try
+{
+	con = mycon.get_DBConnection();
+	
+	String city = ReplaceUtility.replacenull(request.getParameter("city"));
+	String location=ReplaceUtility.replacenull(request.getParameter("location"));
+	String[] locationArr=null;
+	if(location.length()>=1)
+	{
+		locationArr=location.split(",");
+	}
+
+%>
+<html>
+<head>
+</head>
+<body>
+  :&nbsp;<select multiple size="3" name="location" id="location" onchange="checkAllSelected('location');fncPopulatebranch();" style="width:130px">
+	<option  value="">-- All --</option>
+<%
+	int locId=0; 
+	query = " select locid,location "+
+			  " from location_MASTER "+
+			  " where locid in (select locid from CITY_LOCATION_MAP "+
+            " where cityid=? and status='A')";
+	pst = con.prepareStatement(query);
+	pst.setString(1,city);
+	rs = pst.executeQuery();
+	while(rs.next())
+	{
+		locId=rs.getInt("locid");
+		%>
+		<option value="<%=locId%>"
+		<%
+			if(location != "")
+			{
+				if(locationArr!=null)
+				{
+					for(int loopIndex = 0; loopIndex < locationArr.length; loopIndex++)
+					{
+						if(ReplaceUtility.replacenull(locationArr[loopIndex]).equals(""+locId))
+						{
+							out.print("selected");
+						}
+					}
+				}
+			}
+		%>
+		>
+			<%=ReplaceUtility.replacenull(rs.getString("location"))%>
+		</option>
+		<%
+	}
+	rs.close();
+	pst.close();
+
+%>
+</select>
+</body>
+</html>
+<%
+}
+catch(Exception e)
+{
+	System.out.println("Exception in KOTAK SECURITIES >>include >>populateLocation.jsp... "+e);	
+}
+finally
+{
+	mycon.close_DBResultset(rs);
+	mycon.close_PreparedStatement(pst);
+	mycon.close_DBConnection(con);
+	mycon=null;
+}
+%>

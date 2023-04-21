@@ -1,0 +1,57 @@
+<%@ page language="java" import="gols.common.*,java.sql.*"%>
+<%
+HTTPHeaders.set_response_headers(response);
+DBUtility mycon=new DBUtility();
+PreparedStatement pst=null;
+ResultSet rs=null;
+
+Connection con=null;
+String query = "";
+
+try
+{
+	con = mycon.get_DBConnection();
+	
+	String surveyid = ReplaceUtility.replacenull(request.getParameter("surveyid"));
+	String dimension=ReplaceUtility.replacenull(request.getParameter("dimension"));
+%>
+
+	:&nbsp;<select name="dimension" >
+	<option  value="">-- Select --</option>
+<%
+	query = " select distinct dm.dimensionid,dimension from survey_detail sd "+
+			" inner join dimension_master dm on dm.dimensionid=sd.dimensionid "+
+			" where surveyid=? and dm.dimensionid !=15 order by dimensionid "; 
+	pst = con.prepareStatement(query);
+	pst.setString(1,surveyid);
+	rs = pst.executeQuery();
+	int dimId=0;
+	while(rs.next())
+	{
+		dimId=rs.getInt("dimensionid");
+		%>
+		<option value="<%=dimId%>" <%if(dimension.equals(dimId+"")){out.print("selected");} %>>
+			<%=ReplaceUtility.replacenull(rs.getString("dimension"))%>
+		</option>
+		<%
+	}
+	rs.close();
+	pst.close();
+
+%>
+</select>
+
+<%
+}
+catch(Exception e)
+{
+	System.out.println("Exception in ACGSURVEY>>include >>populateDimension.jsp... "+e);	
+}
+finally
+{
+	mycon.close_DBResultset(rs);
+	mycon.close_PreparedStatement(pst);
+	mycon.close_DBConnection(con);
+	mycon=null;
+}
+%>

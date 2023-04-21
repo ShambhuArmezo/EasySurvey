@@ -1,0 +1,88 @@
+<%@page import="gols.common.ReplaceUtility"%>
+<%
+	response.setHeader("Cache-Control","no-cache"); //HTTP 1.1
+	response.setHeader("Pragma","no-cache"); //HTTP 1.0
+	response.setHeader("Pragma","no-store"); //HTTP 1.0
+	response.setHeader("cache-control", "no-store");
+	response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
+%>
+	<%
+	String role="",user="",adminname = "";
+	role=ReplaceUtility.replacenull((String)session.getAttribute("roleid"));
+	user=ReplaceUtility.replacenull((String)session.getAttribute("adminid"));
+	
+	%>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+<head>
+
+	<link rel="stylesheet" type="text/css" href="../include/slidemenucss/ddlevelsmenu-base.css" />
+	<link rel="stylesheet" type="text/css" href="../include/slidemenucss/ddlevelsmenu-topbar.css" />
+	<link rel="stylesheet" type="text/css" href="../include/slidemenucss/ddlevelsmenu-sidebar.css" />
+	
+	<script type="text/javascript" src="../include/slidemenucss/ddlevelsmenu.js"></script>
+	<script type="text/javascript" src="../js/util.js"></script>
+	
+</head>
+<body> 
+
+	<div id="ddtopmenubar" class="mattblackmenu">
+		<ul> 
+			<li><a href="home" >&nbsp;&nbsp;HOME&nbsp;&nbsp;</a></li>
+			<li><a href="javascript:void(0)" rel="submenuEmployee">PARTICIPANTS&nbsp;&nbsp;</a></li>
+			<%if(role.equals("E")) {%>
+				<li><a href="javascript:void(0)" rel="submenuMaster">MASTERS&nbsp;&nbsp;</a></li>
+			<%}
+			if(role.equals("E") || role.equals("C")) {%>
+			<li><a href="javascript:void(0)" rel="submenuReports">SURVEY REPORTS&nbsp;&nbsp;</a></li>
+			<%}
+			if(role.equals("HR"))
+			{%>
+				<li><a href="changePass" >&nbsp;&nbsp;CHANGE PASSWORD&nbsp;&nbsp;</a></li>
+			<%
+			}
+		 	String logouturl = "logout";
+		 	%> 
+			<li><a href="<%=logouturl%>">LOGOUT</a></li> 
+			
+		</ul>    
+	</div> 
+	<table width="100%">
+	   <tr><td class="txt-red" align="left"  valign="bottom">Signed in as <%=user%>,&nbsp;&nbsp;</td></tr>
+	   <tr><td>&nbsp;</td></tr> 
+	</table> 
+
+	<script type="text/javascript">
+	ddlevelsmenu.setup("ddtopmenubar", "topbar") //ddlevelsmenu.setup("mainmenuid", "topbar|sidebar")
+	</script>
+
+
+    <ul id="submenuEmployee" class="ddsubmenustyle"> 
+    	<!-- <li><a href="addEmp">REGISTER PARTICIPANTS</a></li> -->
+    	<%if(role.equals("E")) {%>
+    	<li><a href="uploadEmp">UPLOAD PARTICIPANTS VIA EXCEL</a></li>
+    	<%} %>
+		<li><a href="empList">VIEW PARTICIPANTS</a></li> 
+    </ul>  
+    
+    <ul id="submenuMaster" class="ddsubmenustyle">
+		<%if(role.equals("E")) {%>
+		<li><a href="addDiv">ADD DIVISION</a></li>
+		<%} %> 
+	</ul>
+    
+    <ul id="submenuReports" class="ddsubmenustyle">
+		<%if(role.equals("E") || role.equals("C")) 
+		{
+			if(role.equals("E")){%>
+			<li><a href="questionWiseReport">QUESTION WISE REPORTS</a></li>
+			<%} %>
+			<li><a href="divisionWiseEmpSurveyStatusReport">DIVISION WISE SURVEY REPORT</a></li>
+		<%} %> 
+	</ul> 
+</body>  
+</html>  
+
+
